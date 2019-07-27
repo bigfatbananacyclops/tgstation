@@ -203,6 +203,20 @@
 	burst_size = 3
 	fire_delay = 1
 
+/obj/item/gun/ballistic/automatic/ak47
+	name = "\improper AK-47 Kalashnikov"
+	desc = "A large, ancient, meme, soviet auto-rifle design used long ago by russians, how in the hell is this even still fabricated?."
+	icon_state = "ak47"
+	item_state = "arg"
+	slot_flags = 0
+	mag_type = /obj/item/ammo_box/magazine/a76239
+	fire_sound = 'sound/weapons/gunshot_smg.ogg'
+	can_suppress = FALSE
+	burst_size = 3
+	fire_delay = 1
+	spread = 7
+
+
 
 // L6 SAW //
 

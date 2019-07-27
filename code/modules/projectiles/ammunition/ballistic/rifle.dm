@@ -18,6 +18,14 @@
 	caliber = "a556"
 	projectile_type = /obj/item/projectile/bullet/a556
 
+// 7.62x39mm (AK-47 Kalashnikov)
+
+/obj/item/ammo_casing/a76239
+	name = "7.62x39mm bullet casing"
+	desc = "A 7.62x39mm bullet casing."
+	caliber = "a76239"
+	projectile_type = /obj/item/projectile/bullet/a76239
+
 // 40mm (Grenade Launcher)
 
 /obj/item/ammo_casing/a40mm

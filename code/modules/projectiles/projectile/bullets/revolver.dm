@@ -8,17 +8,19 @@
 
 /obj/item/projectile/bullet/a50AE
 	name = ".50AE bullet"
-	damage = 60
+	damage = 65
 
 // .38 (Detective's Gun)
 
 /obj/item/projectile/bullet/c38
 	name = ".38 bullet"
-	damage = 25
+	damage = 20
+	speed = 0.1
 
 /obj/item/projectile/bullet/c38/trac
 	name = ".38 TRAC bullet"
 	damage = 10
+	speed = 0.1
 
 /obj/item/projectile/bullet/c38/trac/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -34,6 +36,7 @@
 /obj/item/projectile/bullet/c38/hotshot //similar to incendiary bullets, but do not leave a flaming trail
 	name = ".38 Hot Shot bullet"
 	damage = 20
+	speed = 0.1
 
 /obj/item/projectile/bullet/c38/hotshot/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -45,6 +48,7 @@
 /obj/item/projectile/bullet/c38/iceblox //see /obj/item/projectile/temp for the original code
 	name = ".38 Iceblox bullet"
 	damage = 20
+	speed = 0.1
 	var/temperature = 100
 
 /obj/item/projectile/bullet/c38/iceblox/on_hit(atom/target, blocked = FALSE)
@@ -57,4 +61,4 @@
 
 /obj/item/projectile/bullet/a357
 	name = ".357 bullet"
-	damage = 60
+	damage = 55

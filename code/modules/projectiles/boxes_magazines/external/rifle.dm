@@ -20,3 +20,12 @@
 	caliber = "a556"
 	max_ammo = 30
 	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/a76239
+	name = "curved magazine (7.62x39mm)"
+	icon_state = "5.56m"
+	ammo_type = /obj/item/ammo_casing/a76239
+	caliber = "a76239
+	max_ammo = 30
+
+
