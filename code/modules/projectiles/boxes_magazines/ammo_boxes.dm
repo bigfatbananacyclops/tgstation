@@ -56,11 +56,19 @@
 	multiple_sprites = 1
 
 /obj/item/ammo_box/a762
-	name = "stripper clip (7.62mm)"
+	name = "stripper clip (7.62x54mmR)"
 	desc = "A stripper clip."
 	icon_state = "762"
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 5
+	multiple_sprites = 1
+
+/obj/item/ammo_box/a76251
+	name = "stripper clip (7.62x51mm)"
+	desc = "A stripper clip."
+	icon_state = "7.62x51mm"
+	ammo_type = /obj/item/ammo_casing/a76251
+	max_ammo = 8
 	multiple_sprites = 1
 
 /obj/item/ammo_box/n762

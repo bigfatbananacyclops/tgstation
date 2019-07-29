@@ -40,6 +40,15 @@
 	sawn_desc = "Come with me if you want to live."
 	can_be_sawn_off  = TRUE
 
+// TRENCH SHOTGUN//
+
+/obj/item/gun/ballistic/shotgun/trench
+	name = "Winchester Model 1897 Trench Shotgun"
+	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
+	icon_state = "riotshotgun"
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/trench
+
+
 // Automatic Shotguns//
 
 /obj/item/gun/ballistic/shotgun/automatic/shoot_live_shot(mob/living/user as mob|obj)

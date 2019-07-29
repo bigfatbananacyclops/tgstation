@@ -125,6 +125,16 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "cut")
 	bayonet = TRUE
 
+/obj/item/kitchen/knife/combat
+	name = "trench knife"
+	icon_state = "trenchknife"
+	desc = "A ancient tool of war used in the trenches."
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 70, "embedded_fall_chance" = 30, "embedded_ignore_throwspeed_threshold" = TRUE)
+	force = 25
+	throwforce = 20
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "cut")
+	bayonet = FALSE
+
 /obj/item/kitchen/knife/combat/survival
 	name = "survival knife"
 	icon_state = "survivalknife"

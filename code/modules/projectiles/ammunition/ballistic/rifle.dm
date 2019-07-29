@@ -1,14 +1,23 @@
-// 7.62 (Nagant Rifle)
+// 7.62x54mmR (Nagant Rifle)
 
 /obj/item/ammo_casing/a762
-	name = "7.62 bullet casing"
-	desc = "A 7.62 bullet casing."
+	name = "7.62x54mmR bullet casing"
+	desc = "A 7.62x54mmR bullet casing."
 	icon_state = "762-casing"
 	caliber = "a762"
 	projectile_type = /obj/item/projectile/bullet/a762
 
 /obj/item/ammo_casing/a762/enchanted
 	projectile_type = /obj/item/projectile/bullet/a762_enchanted
+
+//7.62x51mm (M1 Garand)
+
+/obj/item/ammo_casing/a76251
+	name = "7.62x51mm bullet casing"
+	desc = "A 7.62x51mm bullet casing."
+	icon_state = "762-casing"
+	caliber = "a76251"
+	projectile_type = /obj/item/projectile/bullet/a76251
 
 // 5.56mm (M-90gl Carbine)
 
@@ -23,6 +32,7 @@
 /obj/item/ammo_casing/a76239
 	name = "7.62x39mm bullet casing"
 	desc = "A 7.62x39mm bullet casing."
+	icon_state = "762-casing"
 	caliber = "a76239"
 	projectile_type = /obj/item/projectile/bullet/a76239
 

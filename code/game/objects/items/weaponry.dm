@@ -490,6 +490,16 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 1
 	attack_verb = list("clubbed", "bludgeoned")
 
+/obj/item/trenchmace
+	name = "trench mace"
+	desc = "For the beating to death of lizards with their own tails."
+	icon_state = "trenchmace"
+	force = 30
+	throwforce = 30
+	throw_speed = 5
+	throw_range = 3
+	attack_verb = list("clubbed", "bludgeoned")
+
 /obj/item/melee/chainofcommand/tailwhip
 	name = "liz o' nine tails"
 	desc = "A whip fashioned from the severed tails of lizards."

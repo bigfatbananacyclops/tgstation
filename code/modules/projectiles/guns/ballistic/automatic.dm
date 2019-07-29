@@ -104,6 +104,16 @@
 	mag_display = TRUE
 	rack_sound = "sound/weapons/pistollock.ogg"
 
+/obj/item/gun/ballistic/automatic/mp40
+	name = "\improper MP 40"
+	desc = "A lightweight, old, submachine gun, it looks like this gun had seen some real action very long ago."
+	icon_state = "mp40"
+	mag_type = /obj/item/ammo_box/magazine/uzim9mm
+	burst_size = 2
+	bolt_type = BOLT_TYPE_OPEN
+	mag_display = TRUE
+	rack_sound = "sound/weapons/pistollock.ogg"
+
 /obj/item/gun/ballistic/automatic/m90
 	name = "\improper M-90gl Carbine"
 	desc = "A three-round burst 5.56 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher which can be toggled on and off."
@@ -203,9 +213,33 @@
 	burst_size = 3
 	fire_delay = 1
 
+/obj/item/gun/ballistic/automatic/m1garand
+	name = "\improper M1 Garand"
+	desc = "A god damn M1 motherfucking garand, used probably around 700 years ago by the Americans. Shit, how is this even here?."
+	icon_state = "m1garand"
+	item_state = "moistnugget"
+	slot_flags = 0
+	mag_type = /obj/item/ammo_box/a76251
+	fire_sound = 'sound/weapons/gunshot_smg.ogg'
+	can_suppress = FALSE
+	burst_size = 0
+	fire_delay = 2
+
+/obj/item/gun/ballistic/automatic/m16
+	name = "\improper M16 Rifle"
+	desc = "One of the most original and first assault rifles in america, this seems to be the classic design of the rifle, how the hell would someone get a copy of this?."
+	icon_state = "m16"
+	item_state = "arg"
+	slot_flags = 0
+	mag_type = /obj/item/ammo_box/magazine/m16556
+	fire_sound = 'sound/weapons/gunshot_smg.ogg'
+	can_suppress = FALSE
+	burst_size = 3
+	fire_delay = 1
+
 /obj/item/gun/ballistic/automatic/ak47
 	name = "\improper AK-47 Kalashnikov"
-	desc = "A large, ancient, meme, soviet auto-rifle design used long ago by russians, how in the hell is this even still fabricated?."
+	desc = "A large, ancient, meme, soviet auto-rifle design used long ago by Russians, how in the hell is this even still fabricated?."
 	icon_state = "ak47"
 	item_state = "arg"
 	slot_flags = 0
