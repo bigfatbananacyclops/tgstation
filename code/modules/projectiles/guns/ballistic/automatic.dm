@@ -221,6 +221,9 @@
 	slot_flags = 0
 	mag_type = /obj/item/ammo_box/a76251
 	fire_sound = 'sound/weapons/gunshot_smg.ogg'
+	can_bayonet = TRUE
+	knife_x_offset = 36
+	knife_y_offset = 15
 	can_suppress = FALSE
 	burst_size = 0
 	fire_delay = 2

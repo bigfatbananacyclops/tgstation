@@ -494,11 +494,21 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	name = "trench mace"
 	desc = "For the beating to death of lizards with their own tails."
 	icon_state = "trenchmace"
-	force = 30
-	throwforce = 30
+	force = 40
+	throwforce = 20
 	throw_speed = 5
 	throw_range = 3
 	attack_verb = list("clubbed", "bludgeoned")
+
+	var/cooldown = 40 // Default wait time until can attack again.
+
+/obj/item/trenchmace/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+    throwforce = 40
+    if(prob(10))
+        throwforce = 70
+    ..()
+
+
 
 /obj/item/melee/chainofcommand/tailwhip
 	name = "liz o' nine tails"
