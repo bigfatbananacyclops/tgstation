@@ -52,6 +52,22 @@
 	item_color = "camogreen"
 	can_adjust = FALSE
 
+/obj/item/clothing/under/syndicate/swat
+	name = "SWAT fatigues"
+	desc = "A dark navy blue uniform issued for SWAT operators."
+	icon_state = "navyblue"
+	item_state = "g_suit"
+	item_color = "navyblue"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/syndicate/fbi
+	name = "tactical FBI turtleneck suit"
+	desc = "A olive green FBI uniform."
+	icon_state = "olivegreen"
+	item_state = "g_suit"
+	item_color = "olivegreen"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/syndicate/soviet
 	name = "Ratnik 5 tracksuit"
 	desc = "Badly translated labels tell you to clean this in Vodka. Great for squatting in."
