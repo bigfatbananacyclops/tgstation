@@ -58,8 +58,8 @@
 		. += "It has no sorting tags set."
 
 /obj/structure/disposalpipe/sorting/mail/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/destTagger))
-		var/obj/item/destTagger/O = I
+	if(istype(I, /obj/item/dest_tagger))
+		var/obj/item/dest_tagger/O = I
 
 		if(O.currTag)// Tagger has a tag set
 			if(O.currTag in sortTypes)
@@ -68,7 +68,7 @@
 			else
 				sortTypes |= O.currTag
 				to_chat(user, "<span class='notice'>Added \"[GLOB.TAGGERLOCATIONS[O.currTag]]\" filter.</span>")
-			playsound(src, 'sound/machines/twobeep_high.ogg', 100, 1)
+			playsound(src, 'sound/machines/twobeep_high.ogg', 100, TRUE)
 	else
 		return ..()
 

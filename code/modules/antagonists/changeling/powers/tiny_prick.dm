@@ -20,7 +20,6 @@
 	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	changeling.chosen_sting = src
 
-	user.hud_used.lingstingdisplay.icon = icon_icon
 	user.hud_used.lingstingdisplay.icon_state = button_icon_state
 	user.hud_used.lingstingdisplay.invisibility = 0
 
@@ -147,14 +146,14 @@
 
 	var/obj/item/melee/arm_blade/false/blade = new(target,1)
 	target.put_in_hands(blade)
-	target.visible_message("<span class='warning'>A grotesque blade forms around [target.name]\'s arm!</span>", "<span class='userdanger'>Your arm twists and mutates, transforming into a horrific monstrosity!</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
-	playsound(target, 'sound/effects/blobattack.ogg', 30, 1)
+	target.visible_message("<span class='warning'>A grotesque blade forms around [target.name]\'s arm!</span>", "<span class='userdanger'>Your arm twists and mutates, transforming into a horrific monstrosity!</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
+	playsound(target, 'sound/effects/blobattack.ogg', 30, TRUE)
 
 	addtimer(CALLBACK(src, .proc/remove_fake, target, blade), 600)
 	return TRUE
 
 /datum/action/changeling/sting/false_armblade/proc/remove_fake(mob/target, obj/item/melee/arm_blade/false/blade)
-	playsound(target, 'sound/effects/blobattack.ogg', 30, 1)
+	playsound(target, 'sound/effects/blobattack.ogg', 30, TRUE)
 	target.visible_message("<span class='warning'>With a sickening crunch, \
 	[target] reforms [target.p_their()] [blade.name] into an arm!</span>",
 	"<span class='warning'>[blade] reforms back to normal.</span>",
@@ -212,7 +211,7 @@
 	target.blur_eyes(40)
 	return TRUE
 
-/datum/action/changeling/sting/LSD
+/datum/action/changeling/sting/lsd
 	name = "Hallucination Sting"
 	desc = "We cause mass terror to our victim."
 	helptext = "We evolve the ability to sting a target with a powerful hallucinogenic chemical. The target does not notice they have been stung, and the effect occurs after 30 to 60 seconds."
@@ -220,12 +219,12 @@
 	chemical_cost = 10
 	dna_cost = 1
 
-/datum/action/changeling/sting/LSD/sting_action(mob/user, mob/living/carbon/target)
+/datum/action/changeling/sting/lsd/sting_action(mob/user, mob/living/carbon/target)
 	log_combat(user, target, "stung", "LSD sting")
 	addtimer(CALLBACK(src, .proc/hallucination_time, target), rand(300,600))
 	return TRUE
 
-/datum/action/changeling/sting/LSD/proc/hallucination_time(mob/living/carbon/target)
+/datum/action/changeling/sting/lsd/proc/hallucination_time(mob/living/carbon/target)
 	if(target)
 		target.hallucination = max(90, target.hallucination)
 

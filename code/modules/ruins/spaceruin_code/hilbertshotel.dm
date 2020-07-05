@@ -70,7 +70,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     sendToNewRoom(chosenRoomNumber, user)
 
 
-/obj/item/hilbertshotel/proc/tryActiveRoom(var/roomNumber, var/mob/user)
+/obj/item/hilbertshotel/proc/tryActiveRoom(roomNumber, mob/user)
     if(activeRooms["[roomNumber]"])
         var/datum/turf_reservation/roomReservation = activeRooms["[roomNumber]"]
         do_sparks(3, FALSE, get_turf(user))
@@ -79,7 +79,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     else
         return FALSE
 
-/obj/item/hilbertshotel/proc/tryStoredRoom(var/roomNumber, var/mob/user)
+/obj/item/hilbertshotel/proc/tryStoredRoom(roomNumber, mob/user)
     if(storedRooms["[roomNumber]"])
         var/datum/turf_reservation/roomReservation = SSmapping.RequestBlockReservation(hotelRoomTemp.width, hotelRoomTemp.height)
         hotelRoomTempEmpty.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
@@ -102,7 +102,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     else
         return FALSE
 
-/obj/item/hilbertshotel/proc/sendToNewRoom(var/roomNumber, var/mob/user)
+/obj/item/hilbertshotel/proc/sendToNewRoom(roomNumber, mob/user)
     var/datum/turf_reservation/roomReservation = SSmapping.RequestBlockReservation(hotelRoomTemp.width, hotelRoomTemp.height)
     if(ruinSpawned)
         mysteryRoom = GLOB.hhmysteryRoomNumber
@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     do_sparks(3, FALSE, get_turf(user))
     user.forceMove(locate(roomReservation.bottom_left_coords[1] + hotelRoomTemp.landingZoneRelativeX, roomReservation.bottom_left_coords[2] + hotelRoomTemp.landingZoneRelativeY, roomReservation.bottom_left_coords[3]))
 
-/obj/item/hilbertshotel/proc/linkTurfs(var/datum/turf_reservation/currentReservation, var/currentRoomnumber)
+/obj/item/hilbertshotel/proc/linkTurfs(datum/turf_reservation/currentReservation, currentRoomnumber)
     var/area/hilbertshotel/currentArea = get_area(locate(currentReservation.bottom_left_coords[1], currentReservation.bottom_left_coords[2], currentReservation.bottom_left_coords[3]))
     currentArea.name = "Hilbert's Hotel Room [currentRoomnumber]"
     currentArea.parentSphere = src
@@ -221,9 +221,9 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
     var/obj/item/hilbertshotel/parentSphere
 
 /turf/open/space/bluespace/Entered(atom/movable/A)
-    . = ..()
-    A.forceMove(get_turf(parentSphere))
-    do_sparks(3, FALSE, get_turf(A))
+	. = ..()
+	if(parentSphere && A.forceMove(get_turf(parentSphere)))
+		do_sparks(3, FALSE, get_turf(A))
 
 /turf/closed/indestructible/hoteldoor
     name = "Hotel Door"
@@ -263,7 +263,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 /turf/closed/indestructible/hoteldoor/attack_paw(mob/user)
     promptExit(user)
 
-/turf/closed/indestructible/hoteldoor/attack_hulk(mob/living/carbon/human/user, does_attack_animation)
+/turf/closed/indestructible/hoteldoor/attack_hulk(mob/living/carbon/human/user)
     promptExit(user)
 
 /turf/closed/indestructible/hoteldoor/attack_larva(mob/user)
@@ -282,22 +282,22 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
         to_chat(user, "<span class='notice'>You peak through the door's bluespace peephole...</span>")
         user.reset_perspective(parentSphere)
         user.set_machine(src)
-        var/datum/action/peepholeCancel/PHC = new
+        var/datum/action/peephole_cancel/PHC = new
         user.overlay_fullscreen("remote_view", /obj/screen/fullscreen/impaired, 1)
         PHC.Grant(user)
 
 /turf/closed/indestructible/hoteldoor/check_eye(mob/user)
     if(get_dist(get_turf(src), get_turf(user)) >= 2)
         user.unset_machine()
-        for(var/datum/action/peepholeCancel/PHC in user.actions)
+        for(var/datum/action/peephole_cancel/PHC in user.actions)
             PHC.Trigger()
 
-/datum/action/peepholeCancel
+/datum/action/peephole_cancel
     name = "Cancel View"
     desc = "Stop looking through the bluespace peephole."
     button_icon_state = "cancel_peephole"
 
-/datum/action/peepholeCancel/Trigger()
+/datum/action/peephole_cancel/Trigger()
     . = ..()
     to_chat(owner, "<span class='warning'>You move away from the peephole.</span>")
     owner.reset_perspective()
