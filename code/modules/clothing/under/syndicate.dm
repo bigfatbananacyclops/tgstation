@@ -72,15 +72,15 @@
 	name = "SWAT fatigues"
 	desc = "A dark navy blue uniform issued for SWAT operators."
 	icon_state = "navyblue"
-	item_state = "g_suit"
+	item_state = "nb_suit"
 	item_color = "navyblue"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/syndicate/fbi
 	name = "tactical FBI turtleneck suit"
-	desc = "A olive green FBI uniform."
+	desc = "A olive green FBI turtleneck uniform."
 	icon_state = "olivegreen"
-	item_state = "g_suit"
+	item_state = "og_suit"
 	item_color = "olivegreen"
 	can_adjust = FALSE
 
