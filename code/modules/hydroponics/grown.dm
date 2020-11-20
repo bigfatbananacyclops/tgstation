@@ -35,8 +35,8 @@
 		seed = new seed()
 		seed.adjust_potency(50-seed.potency)
 
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
 
 	if(dried_type == -1)
 		dried_type = src.type
@@ -54,8 +54,8 @@
 	if(reagents)
 		if(bitesize_mod)
 			bitesize = 1 + round(reagents.total_volume / bitesize_mod)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/reagent_containers/food/snacks/grown/examine(user)
 	. = ..()
@@ -74,6 +74,7 @@
 		var/reag_txt = ""
 		if(seed && P_analyzer.scan_mode == PLANT_SCANMODE_CHEMICALS)
 			msg += "<br><span class='info'>*Plant Reagents*</span>"
+			msg += "<br><span class='info'>Maximum reagent capacity: [reagents.maximum_volume]</span>"
 			var/chem_cap = 0
 			for(var/reagent_id in reagents.reagent_list)
 				var/datum/reagent/R  = reagent_id
@@ -96,7 +97,7 @@
 
 // Various gene procs
 /obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
-	if(seed && seed.get_gene(/datum/plant_gene/trait/squash))
+	if(seed?.get_gene(/datum/plant_gene/trait/squash))
 		squash(user)
 	..()
 
@@ -155,7 +156,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/on_grind()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(grind_results&&grind_results.len)
+	if(grind_results?.len)
 		for(var/i in 1 to grind_results.len)
 			grind_results[grind_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)
@@ -163,7 +164,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/on_juice()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(juice_results&&juice_results.len)
+	if(juice_results?.len)
 		for(var/i in 1 to juice_results.len)
 			juice_results[juice_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)

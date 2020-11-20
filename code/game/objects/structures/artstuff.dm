@@ -40,6 +40,7 @@
 	desc = "Draw out your soul on this canvas!"
 	icon = 'icons/obj/artstuff.dmi'
 	icon_state = "11x11"
+	flags_1 = UNPAINTABLE_1
 	resistance_flags = FLAMMABLE
 	var/width = 11
 	var/height = 11
@@ -220,7 +221,7 @@
 	desc = "The perfect showcase for your favorite deathtrap memories."
 	icon = 'icons/obj/decals.dmi'
 	custom_materials = list(/datum/material/wood = 2000)
-	flags_1 = 0
+	flags_1 = NONE
 	icon_state = "frame-empty"
 	result_path = /obj/structure/sign/painting
 
@@ -237,7 +238,7 @@
 /obj/structure/sign/painting/Initialize(mapload, dir, building)
 	. = ..()
 	SSpersistence.painting_frames += src
-	AddComponent(/datum/component/art, 20)
+	AddElement(/datum/element/art, OK_ART)
 	if(dir)
 		setDir(dir)
 	if(building)
@@ -284,7 +285,7 @@
 
 /obj/structure/sign/painting/update_icon_state()
 	. = ..()
-	if(C && C.generated_icon)
+	if(C?.generated_icon)
 		icon_state = "frame-overlay"
 	else
 		icon_state = "frame-empty"
@@ -292,7 +293,7 @@
 
 /obj/structure/sign/painting/update_overlays()
 	. = ..()
-	if(C && C.generated_icon)
+	if(C?.generated_icon)
 		var/mutable_appearance/MA = mutable_appearance(C.generated_icon)
 		MA.pixel_x = C.framed_offset_x
 		MA.pixel_y = C.framed_offset_y

@@ -37,7 +37,7 @@
 	usr.emote("me",1,message,TRUE)
 
 ///Speak as a dead person (ghost etc)
-/mob/proc/say_dead(var/message)
+/mob/proc/say_dead(message)
 	var/name = real_name
 	var/alt_name = ""
 
@@ -67,7 +67,7 @@
 	if(isobserver(src) && O.deadchat_name)
 		name = "[O.deadchat_name]"
 	else
-		if(mind && mind.name)
+		if(mind?.name)
 			name = "[mind.name]"
 		else
 			name = real_name
@@ -81,7 +81,7 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_DEADSAY, message) & MOB_DEADSAY_SIGNAL_INTERCEPT)
 		return
 	var/displayed_key = key
-	if(client.holder?.fakekey)
+	if(client?.holder?.fakekey)
 		displayed_key = null
 	deadchat_broadcast(rendered, source, follow_target = src, speaker_key = displayed_key)
 
@@ -93,11 +93,7 @@
 
 ///Check if the mob has a hivemind channel
 /mob/proc/hivecheck()
-	return 0
-
-///Check if the mob has a ling hivemind
-/mob/proc/lingcheck()
-	return LINGHIVE_NONE
+	return FALSE
 
 ///The amount of items we are looking for in the message
 #define MESSAGE_MODS_LENGTH 6
