@@ -18,10 +18,10 @@
 	obj_damage = 20
 	attack_sound = 'sound/weapons/punch1.ogg'
 
-	/mob/living/basic/gorilla/icerilla/Initialize(mapload)
+/mob/living/basic/gorilla/icerilla/Initialize(mapload)
 	. = ..()
 
-	/mob/living/basic/gorilla/icerilla/update_overlays()
+/mob/living/basic/gorilla/icerilla/update_overlays()
 	. = ..()
 	if (is_holding_items())
 		. += "standing_overlay"
@@ -34,10 +34,10 @@
 
 
 
-	/mob/living/basic/gorilla/icerilla/lesser_icerilla
-	name = "lesser Gorilla"
+/mob/living/basic/gorilla/icerilla/lesser_icerilla
+	name = "lesser Icerilla"
 	desc = "An adolescent Gorilla. It may not be fully grown but, much like a banana, that just means it's sturdier and harder to chew!"
 
-	/mob/living/basic/gorilla/icerilla/lesser_icerilla/Initialize(mapload)
+/mob/living/basic/gorilla/icerilla/lesser_icerilla/Initialize(mapload)
 	. = ..()
 	transform *= 0.75
