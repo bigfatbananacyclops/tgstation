@@ -10,7 +10,7 @@
 	icon_dead = "icerilla_dead"
 	maxHealth = 220
 	health = 220
-	speed = 0.025
+	speed = -1
 	melee_attack_cooldown = CLICK_CD_MELEE
 	melee_damage_lower = 15
 	melee_damage_upper = 18
