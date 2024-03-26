@@ -34,7 +34,6 @@
 		cell = attacking_object
 		user.visible_message(span_notice("[user.name] inserts the power cell to [src.name]!"))
 		balloon_alert(user, "cell inserted")
-		chargecount = 0
 		update_appearance()
 		return
 
@@ -134,7 +133,6 @@
 			var/obj/item/stock_parts/cell/crap/empty/bad_cell = new(src)
 			bad_cell.forceMove(src)
 			cell = bad_cell
-			chargecount = 0
 			user.visible_message(span_notice("[user] fabricates a weak power cell and places it into [src]."), \
 			span_warning("Your [pseudocircuit.name] whirrs with strain as you create a weak power cell and place it into [src]!"))
 			update_appearance()
@@ -221,7 +219,7 @@
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "draining power"), alert_timer_duration)
-		if(do_after(user, APC_DRAIN_TIME, target = src))
+		while(do_after(user, APC_DRAIN_TIME, target = src))
 			if(cell.charge <= (cell.maxcharge / 2) || (stomach.crystal_charge > charge_limit))
 				return
 			balloon_alert(ethereal, "received charge")
@@ -243,9 +241,10 @@
 		balloon_alert(ethereal, "can't transfer power!")
 		return
 	if(istype(stomach))
-		balloon_alert(ethereal, "transferred power")
-		stomach.adjust_charge(-APC_POWER_GAIN)
-		cell.give(APC_POWER_GAIN)
+		while(do_after(user, APC_DRAIN_TIME, target = src))
+			balloon_alert(ethereal, "transferred power")
+			stomach.adjust_charge(-APC_POWER_GAIN)
+			cell.give(-stomach.adjust_charge(-APC_POWER_GAIN))
 	else
 		balloon_alert(ethereal, "can't transfer power!")
 
@@ -288,7 +287,7 @@
 /obj/machinery/power/apc/proc/can_use(mob/user, loud = 0) //used by attack_hand() and Topic()
 	if(isAdminGhostAI(user))
 		return TRUE
-	if(!user.has_unlimited_silicon_privilege)
+	if(!HAS_SILICON_ACCESS(user))
 		return TRUE
 	var/mob/living/silicon/ai/AI = user
 	var/mob/living/silicon/robot/robot = user
